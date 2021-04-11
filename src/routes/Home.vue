@@ -17,7 +17,7 @@ export default {
     Search,
     MovieList
   },
-  mounted() {
+  created() {
     this.$store.dispatch('movie/initMovies')
   }
 }

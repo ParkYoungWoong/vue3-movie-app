@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div 
+    <div
       :class="{ 'no-result': !movies.length }"
       class="inner">
       <Loader v-if="loading" />
@@ -45,7 +45,7 @@ export default {
 .container {
   margin-top: 30px;
   .inner {
-    background-color: #e4e9ee;
+    background-color: $gray-200;
     padding: 10px 0;
     border-radius: 4px;
     text-align: center;
@@ -54,7 +54,7 @@ export default {
     }
   }
   .message {
-    color: rgba(#000, .4);
+    color: $gray-400;
     font-size: 20px;
   }
   .movies {

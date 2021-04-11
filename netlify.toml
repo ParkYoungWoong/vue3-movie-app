@@ -15,3 +15,8 @@
   port = 8080 # 출력할 Netlify 서버의 포트를 지정합니다.
   publish = "dist" # 프로젝트의 정적 콘텐츠 디렉토리를 지정합니다.
   autoLaunch = false # Netlify 서버가 준비되면 자동으로 브라우저를 오픈할 것인지 지정합니다.
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

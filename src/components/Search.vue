@@ -79,8 +79,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
-
 .container {
   display: flex;
   > * {
@@ -121,7 +119,7 @@ export default {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-      } 
+      }
     }
     .btn {
       width: 100%;

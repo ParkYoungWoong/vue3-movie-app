@@ -1,4 +1,5 @@
 import axios from 'axios'
+import _unionBy from 'lodash/unionBy'
 
 const _defaultMessage = 'Search for the movie title!'
 
@@ -46,12 +47,9 @@ export default {
         })
         const { Search, totalResults } = res.data
         commit('updateState', {
-          movies: Search,
-          loading: false
+          movies: Search
         })
         total = parseInt(totalResults, 10)
-        const pageLength = Math.ceil(total / 10)
-        console.log(pageLength)
 
       } catch (message) {
         commit('updateState', {
@@ -59,7 +57,35 @@ export default {
           message,
           loading: false
         })
+        return
       }
+
+      // 추가 요청..
+      // ceil = 올림!
+      const pageLength = Math.ceil(total / 10)
+      console.log(pageLength)
+
+      if (pageLength > 1) {
+        for (let page = 2; page <= pageLength; page += 1) {
+          if (page > (payload.number / 10)) break
+          // const res = await _fetchMovie({
+          //   ...payload,
+          //   page
+          // })
+          const res = await axios.post('/.netlify/functions/movie', {
+            ...payload,
+            page
+          })
+          const { Search } = res.data
+          commit('updateState', {
+            movies: _unionBy(state.movies, Search, 'imdbID')
+          })
+        }
+      }
+
+      commit('updateState', {
+        loading: false
+      })
     },
     async searchMovieWithId({ state, commit }, payload) {
       if (state.loading) return
@@ -94,7 +120,7 @@ function _fetchMovie(payload) {
   const url = id
     ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}&plot=full`
     : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
-  
+
   return new Promise((resolve, reject) => {
     axios
       .get(url)
