@@ -1,0 +1,17 @@
+# Netlify Dev
+# https://cli.netlify.com/netlify-dev/#netlifytoml-dev-block
+
+# 제품 모드
+[build]
+  command = "npm run build"
+  functions = "functions" # Netlify 서버리스 함수가 작성된 디렉토리를 지정합니다.
+  publish = "dist" # 프로젝트 빌드 결과의 디렉토리를 지정합니다.
+
+# 개발 모드
+[dev]
+  framework = "#custom" # 감지할 프로젝트 유형을 지정합니다. 앱 서버 및 `targetPort` 옵션을 실행하는 명령 옵션은 `#custom`입니다.
+  command = "npm run dev:webpack" # 연결할 프로젝트의 개발 서버를 실행하는 명령(스크립트)을 지정합니다.
+  targetPort = 8079 # 연결할 프로젝트 개발 서버의 포트를 지정합니다.
+  port = 8080 # 출력할 Netlify 서버의 포트를 지정합니다.
+  publish = "dist" # 프로젝트의 정적 콘텐츠 디렉토리를 지정합니다.
+  autoLaunch = false # Netlify 서버가 준비되면 자동으로 브라우저를 오픈할 것인지 지정합니다.
