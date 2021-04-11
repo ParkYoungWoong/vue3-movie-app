@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from './Home'
 import Movie from './Movie'
 import About from './About'
 import NotFound from './NotFound'
 
 export default createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   scrollBehavior() {
     return { top: 0 }
   },
