@@ -1,12 +1,12 @@
 import { createApp } from 'vue'
 import App from './App'
 import store from './store'  // Same as './store/index.js'
-import routes from './routes' // Same as './router/index.js'
+import router from './routes' // Same as './routes/index.js'
 import loadImage from './plugins/loadImage'
 import 'bootstrap/dist/js/bootstrap.esm'
 
 createApp(App)
   .use(store)
-  .use(routes)
+  .use(router)
   .use(loadImage)
   .mount('#app')
