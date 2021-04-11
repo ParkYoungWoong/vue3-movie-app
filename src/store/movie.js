@@ -36,11 +36,7 @@ export default {
       let total = 0
 
       try {
-        // const res = await _fetchMovie({
-        //   ...payload,
-        //   page: 1
-        // })
-        const res = await axios.post('/.netlify/functions/movie', {
+        const res = await _fetchMovie({
           ...payload,
           page: 1
         })
@@ -70,8 +66,7 @@ export default {
       })
 
       try {
-        // const res = await _fetchMovie(payload)
-        const res = await axios.post('/.netlify/functions/movie', payload)
+        const res = await _fetchMovie(payload)
         commit('updateState', {
           theMovie: res.data,
           loading: false
