@@ -2,7 +2,7 @@
   <header>
     <Logo />
     <div class="nav nav-pills">
-      <div 
+      <div
         v-for="nav in navigations"
         :key="nav.name"
         class="nav-item">
@@ -14,6 +14,13 @@
           {{ nav.name }}
         </RouterLink>
       </div>
+    </div>
+    <div
+      class="user"
+      @click="toAbout">
+      <img
+        :src="$store.state.about.image"
+        alt="HEROPY" />
     </div>
   </header>
 </template>
@@ -46,10 +53,12 @@ export default {
   },
   methods: {
     isMatch(path) {
-      if (!path) {
-        return false
-      }
+      // if (!path) { return false }
+      // Optional chaining
       return path?.test(this.$route.fullPath)
+    },
+    toAbout() {
+      this.$router.push('/about')
     }
   }
 }
@@ -61,5 +70,35 @@ header {
   display: flex;
   align-items: center;
   padding: 0 40px;
+  position: relative;
+  .logo {
+    margin-right: 40px;
+  }
+  .user {
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: $gray-200;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    margin: auto;
+    transition: .4s;
+    &:hover {
+      background-color: darken($gray-200, 10%);
+    }
+    img {
+      width: 100%;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .nav {
+      display: none;
+    }
+  }
 }
 </style>

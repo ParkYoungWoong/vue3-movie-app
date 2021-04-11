@@ -19,7 +19,7 @@
     </template>
     <template v-else>
       <div class="movie-details">
-        <div 
+        <div
           :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})` }"
           class="poster">
           <Loader
@@ -41,7 +41,7 @@
           <div class="ratings">
             <h3>Ratings</h3>
             <div class="rating-wrap">
-              <div 
+              <div
                 v-for="{ Source: name, Value: score } in theMovie.Ratings"
                 :key="name"
                 :title="name"
@@ -76,6 +76,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Loader from '~/components/Loader'
 
 export default {
@@ -88,12 +89,10 @@ export default {
     }
   },
   computed: {
-    loading() {
-      return this.$store.state.movie.loading
-    },
-    theMovie() {
-      return this.$store.state.movie.theMovie
-    }
+    ...mapState('movie', [
+      'loading',
+      'theMovie'
+    ])
   },
   created() {
     this.$store.dispatch('movie/searchMovieWithId', {
@@ -102,9 +101,12 @@ export default {
   },
   methods: {
     requestDiffSizeImage(url, size = 700) {
-      if (!url) {
+      // 잘못된 URL(Poster)인 경우.
+      if (!url || url === 'N/A') {
+        this.imageLoading = false
         return ''
       }
+      // 정상적인 URL인 경우.
       const src = url.replace('SX300', `SX${size}`)
       this.$loadImage(src)
         .then(() => {
@@ -117,10 +119,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
-
 .container {
-  padding: 40px 0 0;
+  padding-top: 40px;
 }
 .skeletons {
   display: flex;
@@ -135,7 +135,7 @@ export default {
   }
   .skeleton {
     border-radius: 10px;
-    background-color: rgba(#000, .1);
+    background-color: $gray-200;
     &.title {
       width: 80%;
       height: 70px;
@@ -153,7 +153,7 @@ export default {
     &.etc {
       width: 50%;
       height: 50px;
-      margin-top: 20px; 
+      margin-top: 20px;
     }
   }
 }
@@ -161,19 +161,20 @@ export default {
   display: flex;
   color: $gray-600;
   .poster {
-    flex-shrink: 0;
-    width: 500px;
-    height: 500px * 3/2;
+    $width: 500px;
+    width: $width;
+    height: $width * 3/2;
     margin-right: 70px;
     border-radius: 10px;
-    background-color: rgba(#000, .1);
+    background-color: $gray-200;
     background-size: cover;
     background-position: center;
     position: relative;
+    flex-shrink: 0;
   }
   .specs {
     .title {
-      color: #000;
+      color: $black;
       font-family: 'Oswald', sans-serif;
       font-size: 70px;
       line-height: 1;
@@ -211,9 +212,40 @@ export default {
     }
     h3 {
       margin: 24px 0 6px;
-      color: #000;
+      color: $black;
       font-family: 'Oswald', sans-serif;
       font-size: 20px;
+    }
+  }
+  @include media-breakpoint-down(xl) {
+    .poster {
+      $width: 300px;
+      width: $width;
+      height: $width * 3/2;
+      margin-right: 40px;
+    }
+  }
+  @include media-breakpoint-down(lg) {
+    & {
+      display: block;
+      .poster {
+        margin-bottom: 40px;
+      }
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .specs {
+      .title {
+        font-size: 50px;
+      }
+      .ratings {
+        .rating-wrap {
+          display: block;
+          .rating {
+            margin-top: 10px;
+          }
+        }
+      }
     }
   }
 }

@@ -22,12 +22,12 @@
     font-family: 'Oswald', sans-serif;
     font-size: 80px;
     span {
-      color: var(--bs-primary);
+      color: $primary;
     }
   }
   .description {
     margin: 30px 0;
-    color: rgba(#000, .6);
+    color: $gray-600;
   }
 }
 </style>
