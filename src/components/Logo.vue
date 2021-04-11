@@ -1,23 +1,34 @@
 <template>
   <RouterLink
     to="/"
+    :style="{ opacity }"
     class="logo">
     <span>OMDbAPI</span>.COM
   </RouterLink>
 </template>
 
+<script>
+export default {
+  props: {
+    opacity: {
+      type: String,
+      default: '1'
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 .logo {
   font-family: 'Oswald', sans-serif;
   font-size: 20px;
-  color: #000;
+  color: $black;
   text-decoration: none;
-  margin-right: 40px;
   &:hover {
-    color: #000;
+    color: $black;
   }
   span {
-    color: var(--bs-primary);
+    color: $primary;
   }
 }
 </style>

@@ -41,6 +41,7 @@ export default {
   },
   methods: {
     async init() {
+      console.log('Poster:', this.movie.Poster)
       if (this.movie.Poster === 'N/A') {
         this.imageLoading = false
       } else {
@@ -69,23 +70,24 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    border: 6px solid var(--bs-primary);
+    border: 6px solid $primary;
   }
   .info {
-    background-color: rgba(#000, .4);
+    background-color: rgba($black, .3);
     backdrop-filter: blur(10px);
     width: 100%;
+    padding: 14px;
+    font-size: 14px;
     box-sizing: border-box;
     position: absolute;
     left: 0;
     bottom: 0;
-    padding: 14px;
   }
   .year {
-    color: var(--bs-primary);
+    color: $primary;
   }
   .title {
-    color: #fff;
+    color: $white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
