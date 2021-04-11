@@ -30,5 +30,16 @@ module.exports = {
       singleline: 'never',
       multiline: 'never'
     }]
-  }
+  },
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.js',
+        '**/tests/unit/**/*.test.js'
+      ],
+      env: {
+        jest: true
+      }
+    }
+  ]
 }

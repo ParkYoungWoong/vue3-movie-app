@@ -1,5 +1,4 @@
 <template>
-  <!-- Remove & use example component! -->
   <Header />
   <RouterView />
   <Footer />
