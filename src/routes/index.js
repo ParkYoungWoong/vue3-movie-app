@@ -11,22 +11,18 @@ export default createRouter({
   },
   routes: [
     {
-      name: 'Home',
       path: '/',
       component: Home
     },
     {
-      name: 'Movie',
       path: '/movie/:id?',
       component: Movie
     },
     {
-      name: 'About',
       path: '/about',
       component: About
     },
     {
-      name: 'NotFound',
       path: '/:pathMatch(.*)*',
       component: NotFound
     }
