@@ -1,9 +1,4 @@
 $primary: #FDC000;
-
-@import "../../node_modules/bootstrap/scss/functions";
-@import "../../node_modules/bootstrap/scss/variables";
-@import "../../node_modules/bootstrap/scss/mixins";
-
 $container-max-widths: (
   sm: 540px,
   md: 704px,
@@ -11,5 +6,9 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1364px
 );
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
