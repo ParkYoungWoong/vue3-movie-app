@@ -1,21 +1,19 @@
 <template>
-  <div class="user-profile">
-    <div class="photo">
-      <Loader
-        v-if="imageLoading"
-        absolute />
-      <img
-        :src="image"
-        :alt="name" />
+  <div class="photo">
+    <Loader
+      v-if="imageLoading"
+      absolute />
+    <img
+      :src="image"
+      :alt="name" />
+  </div>
+  <div class="details">
+    <div class="name">
+      {{ name }}
     </div>
-    <div class="details">
-      <div class="name">
-        {{ name }}
-      </div>
-      <div>{{ email }}</div>
-      <div>{{ blog }}</div>
-      <div>{{ phone }}</div>
-    </div>
+    <div>{{ email }}</div>
+    <div>{{ blog }}</div>
+    <div>{{ phone }}</div>
   </div>
 </template>
 
