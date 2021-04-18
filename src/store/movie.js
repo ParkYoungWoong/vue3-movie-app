@@ -27,7 +27,7 @@ export default {
         loading: false
       })
     },
-    async searchMovie({ state, commit }, payload) {
+    async searchMovies({ state, commit }, payload) {
       if (state.loading) return
 
       commit('updateState', {

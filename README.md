@@ -48,6 +48,12 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 
 http://www.evotech.net/blog/2007/04/named-html-entities-in-numeric-order/
 
+## 설치 주의사항
+
+npm i vue-router@4  
+npm i vuex@next  
+npm i bootstrap@next  
+
 ## 🤔 Issues..
 
 [Add issue!](https://github.com/ParkYoungWoong/vue3-movie-app/issues/new)
