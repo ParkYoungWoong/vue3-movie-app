@@ -34,8 +34,6 @@
 </template>
 
 <script>
-const thisYear = new Date().getFullYear()
-
 export default {
   data() {
     return {
@@ -56,6 +54,7 @@ export default {
           name: 'year',
           items: (() => {
             const years = []
+            const thisYear = new Date().getFullYear()
             for (let i = thisYear; i >= 1985; i -= 1) {
               years.push(i)
             }
@@ -67,7 +66,7 @@ export default {
   },
   methods: {
     apply() {
-      this.$store.dispatch('movie/searchMovie', {
+      this.$store.dispatch('movie/searchMovies', {
         title: this.title,
         type: this.type,
         number: this.number,
@@ -119,7 +118,7 @@ export default {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-      } 
+      }
     }
     .btn {
       width: 100%;

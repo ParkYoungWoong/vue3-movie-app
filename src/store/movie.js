@@ -27,7 +27,7 @@ export default {
         loading: false
       })
     },
-    async searchMovie({ state, commit }, payload) {
+    async searchMovies({ state, commit }, payload) {
       if (state.loading) return
 
       commit('updateState', {
@@ -111,7 +111,7 @@ function _fetchMovie(payload) {
   const url = id
     ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}&plot=full`
     : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
-  
+
   return new Promise((resolve, reject) => {
     axios
       .get(url)
