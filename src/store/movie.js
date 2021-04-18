@@ -27,7 +27,7 @@ export default {
         loading: false
       })
     },
-    async searchMovie({ state, commit }, payload) {
+    async searchMovies({ state, commit }, payload) {
       if (state.loading) return
 
       commit('updateState', {
@@ -37,11 +37,7 @@ export default {
       let total = 0
 
       try {
-        // const res = await _fetchMovie({
-        //   ...payload,
-        //   page: 1
-        // })
-        const res = await axios.post('/.netlify/functions/movie', {
+        const res = await _fetchMovie({
           ...payload,
           page: 1
         })
