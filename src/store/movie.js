@@ -37,7 +37,11 @@ export default {
       let total = 0
 
       try {
-        const res = await _fetchMovie({
+        // const res = await _fetchMovie({
+        //   ...payload,
+        //   page: 1
+        // })
+        const res = await axios.post('/.netlify/functions/movie', {
           ...payload,
           page: 1
         })
