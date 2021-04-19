@@ -2,10 +2,18 @@
 const path = require('path')
 const HtmlPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin()
+    ]
+  },
+
   resolve: {
     // 경로에서 확장자 생략 설정
     extensions: ['.js', '.vue'],
