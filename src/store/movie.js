@@ -77,7 +77,7 @@ export default {
             })
           }
         }
-      } catch (message) {
+      } catch ({ message }) {
         commit('updateState', {
           movies: [],
           message
@@ -102,7 +102,7 @@ export default {
           theMovie: res.data,
           loading: false
         })
-      } catch (message) {
+      } catch (error) {
         commit('updateState', {
           theMovie: {},
           loading: false
