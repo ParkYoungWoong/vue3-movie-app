@@ -1,7 +1,7 @@
 <template>
   <RouterLink
     :to="`/movie/${movie.imdbID}`"
-    :style="{backgroundImage: `url(${movie.Poster})`}"
+    :style="{ backgroundImage: `url(${movie.Poster})` }"
     class="movie">
     <Loader
       v-if="imageLoading"
@@ -41,7 +41,6 @@ export default {
   },
   methods: {
     async init() {
-      console.log('Poster:', this.movie.Poster)
       if (this.movie.Poster === 'N/A') {
         this.imageLoading = false
       } else {
@@ -60,6 +59,7 @@ export default {
   height: $width * 3/2;
   margin: 10px;
   border-radius: 4px;
+  background-color: $gray-400;
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -78,19 +78,20 @@ export default {
     width: 100%;
     padding: 14px;
     font-size: 14px;
+    text-align: center;
     box-sizing: border-box;
     position: absolute;
     left: 0;
     bottom: 0;
-  }
-  .year {
-    color: $primary;
-  }
-  .title {
-    color: $white;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    .year {
+      color: $primary;
+    }
+    .title {
+      color: $white;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 </style>
