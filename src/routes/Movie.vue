@@ -17,61 +17,61 @@
         :z-index="9"
         fixed />
     </template>
-    <template v-else>
-      <div class="movie-details">
-        <div 
-          :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})` }"
-          class="poster">
-          <Loader
-            v-if="imageLoading"
-            absolute />
+    <div
+      v-else
+      class="movie-details">
+      <div
+        :style="{ backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})` }"
+        class="poster">
+        <Loader
+          v-if="imageLoading"
+          absolute />
+      </div>
+      <div class="specs">
+        <div class="title">
+          {{ theMovie.Title }}
         </div>
-        <div class="specs">
-          <div class="title">
-            {{ theMovie.Title }}
-          </div>
-          <div class="labels">
-            <span>{{ theMovie.Released }}</span>
-            <span>{{ theMovie.Runtime }}</span>
-            <span>{{ theMovie.Country }}</span>
-          </div>
-          <div class="plot">
-            {{ theMovie.Plot }}
-          </div>
-          <div class="ratings">
-            <h3>Ratings</h3>
-            <div class="rating-wrap">
-              <div 
-                v-for="{ Source: name, Value: score } in theMovie.Ratings"
-                :key="name"
-                :title="name"
-                class="rating">
-                <img
-                  :src="`https://raw.githubusercontent.com/HeropCode/Svelte-Movie-app/master/public/assets/${name}.png`"
-                  :alt="name" />
-                <span>{{ score }}</span>
-              </div>
+        <div class="labels">
+          <span>{{ theMovie.Released }}</span>
+          <span>{{ theMovie.Runtime }}</span>
+          <span>{{ theMovie.Country }}</span>
+        </div>
+        <div class="plot">
+          {{ theMovie.Plot }}
+        </div>
+        <div class="ratings">
+          <h3>Ratings</h3>
+          <div class="rating-wrap">
+            <div
+              v-for="{ Source: name, Value: score } in theMovie.Ratings"
+              :key="name"
+              :title="name"
+              class="rating">
+              <img
+                :src="`https://raw.githubusercontent.com/HeropCode/Svelte-Movie-app/master/public/assets/${name}.png`"
+                :alt="name" />
+              <span>{{ score }}</span>
             </div>
           </div>
-          <div>
-            <h3>Actors</h3>
-            {{ theMovie.Actors }}
-          </div>
-          <div>
-            <h3>Director</h3>
-            {{ theMovie.Director }}
-          </div>
-          <div>
-            <h3>Production</h3>
-            {{ theMovie.Production }}
-          </div>
-          <div>
-            <h3>Genre</h3>
-            {{ theMovie.Genre }}
-          </div>
+        </div>
+        <div>
+          <h3>Actors</h3>
+          {{ theMovie.Actors }}
+        </div>
+        <div>
+          <h3>Director</h3>
+          {{ theMovie.Director }}
+        </div>
+        <div>
+          <h3>Production</h3>
+          {{ theMovie.Production }}
+        </div>
+        <div>
+          <h3>Genre</h3>
+          {{ theMovie.Genre }}
         </div>
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -153,7 +153,7 @@ export default {
     &.etc {
       width: 50%;
       height: 50px;
-      margin-top: 20px; 
+      margin-top: 20px;
     }
   }
 }

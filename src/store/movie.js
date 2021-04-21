@@ -99,12 +99,14 @@ export default {
       try {
         const res = await _fetchMovie(payload)
         commit('updateState', {
-          theMovie: res.data,
-          loading: false
+          theMovie: res.data
         })
       } catch (message) {
         commit('updateState', {
-          theMovie: {},
+          theMovie: {}
+        })
+      } finally {
+        commit('updateState', {
           loading: false
         })
       }
