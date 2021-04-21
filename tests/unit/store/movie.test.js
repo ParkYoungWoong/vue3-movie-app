@@ -24,12 +24,12 @@ describe('store/movie.js', () => {
 
   test('데이터 초기화를 확인', async () => {
     store.commit('updateState', {
-      movies: [{ imdbID: 'abc123' }],
+      movies: [{ imdbID: '1' }],
       message: 'Hello world',
       loading: true
     })
+    store.commit('resetMovies')
 
-    await store.dispatch('initMovies')
     expect(store.state.movies).toEqual([])
     expect(store.state.message).toBe('Search for the movie title!')
     expect(store.state.loading).toBe(false)
@@ -37,29 +37,85 @@ describe('store/movie.js', () => {
 
   test('영화 목록을 잘 가져온 경우', async () => {
     // 설정
-    const Search = [
-      {
-        imdbID: 'abc123',
-        Title: 'Hello',
-        Poster: 'image.jpg',
-        Year: '2021'
-      }
-    ]
-    axios.post.mockResolvedValue({
+    const res = {
       data: {
         totalResults: '1',
-        Search
+        Search: [
+          {
+            imdbID: '1',
+            Title: 'Hello',
+            Poster: 'hello.jpg',
+            Year: '2021'
+          }
+        ]
       }
-    })
+    }
+    axios.post.mockResolvedValue(res)
     // 동작
-    await store.dispatch('searchMovie')
+    await store.dispatch('searchMovies')
     // 확인
-    expect(store.state.movies).toEqual(Search)
+    expect(store.state.movies).toEqual(res.data.Search)
   })
 
   test('영화 목록을 가져오지 못한 경우', async () => {
-    axios.post.mockRejectedValue('Network Error.')
-    await store.dispatch('searchMovie')
-    expect(store.state.message).toBe('Network Error.')
+    // 설정
+    const errorMessage = 'Network Error.'
+    axios.post.mockRejectedValue(new Error(errorMessage))
+    // 동작
+    await store.dispatch('searchMovies')
+    // 확인
+    expect(store.state.message).toBe(errorMessage)
+  })
+
+  test('영화 아이템이 중복된 경우', async () => {
+    // 설정
+    const res = {
+      data: {
+        totalResults: '1',
+        Search: [
+          {
+            imdbID: '1',
+            Title: 'Hello',
+            Poster: 'hello.jpg',
+            Year: '2021'
+          },
+          {
+            imdbID: '1',
+            Title: 'Hello',
+            Poster: 'hello.jpg',
+            Year: '2021'
+          },
+          {
+            imdbID: '1',
+            Title: 'Hello',
+            Poster: 'hello.jpg',
+            Year: '2021'
+          }
+        ]
+      }
+    }
+    axios.post.mockResolvedValue(res)
+    // 동작
+    await store.dispatch('searchMovies')
+    // 확인
+    expect(store.state.movies.length).toBe(1)
+  })
+
+  test('단일 영화의 상세 정보를 잘 가져온 경우', async () => {
+    // 설정
+    const res = {
+      data: {
+        imdbId: '1',
+        Title: 'Frozen',
+        Poster: 'frozen.png',
+        Year: '2021'
+      }
+    }
+    axios.post.mockResolvedValue(res)
+    // 동작
+    await store.dispatch('searchMovieWithId')
+    // 확인
+    expect(store.state.theMovie.Title).toBe('Frozen')
+    expect(store.state.theMovie.Poster).toBe('frozen.png')
   })
 })
