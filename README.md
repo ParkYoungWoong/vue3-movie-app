@@ -53,6 +53,7 @@ http://www.evotech.net/blog/2007/04/named-html-entities-in-numeric-order/
 npm i vue-router@4  
 npm i vuex@next  
 npm i bootstrap@next  
+npm i @vue/test-utils@next
 
 ## 🤔 Issues..
 
