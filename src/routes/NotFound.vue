@@ -3,7 +3,7 @@
     <div class="status">
       404
     </div>
-    <div class="text">
+    <div class="message">
       Page Not Found!
     </div>
   </div>
@@ -19,7 +19,7 @@
       font-size: 160px;
       color: $primary;
     }
-    .text {
+    .message {
       font-size: 50px;
     }
   }
