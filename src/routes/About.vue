@@ -70,7 +70,7 @@ export default {
   text-align: center;
   .name {
     font-size: 40px;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     margin-bottom: 20px;
   }
 }

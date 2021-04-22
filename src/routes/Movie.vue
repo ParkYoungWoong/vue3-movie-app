@@ -48,7 +48,7 @@
               :title="name"
               class="rating">
               <img
-                :src="`https://raw.githubusercontent.com/HeropCode/Svelte-Movie-app/master/public/assets/${name}.png`"
+                :src="`https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/${name}.png`"
                 :alt="name" />
               <span>{{ score }}</span>
             </div>
@@ -131,7 +131,7 @@ export default {
     margin-right: 70px;
   }
   .specs {
-    flex: 1;
+    flex-grow: 1;
   }
   .skeleton {
     border-radius: 10px;
@@ -161,9 +161,8 @@ export default {
   display: flex;
   color: $gray-600;
   .poster {
-    $width: 500px;
-    width: $width;
-    height: $width * 3/2;
+    width: 500px;
+    height: 500px * 3/2;
     margin-right: 70px;
     border-radius: 10px;
     background-color: $gray-200;
@@ -173,9 +172,10 @@ export default {
     flex-shrink: 0;
   }
   .specs {
+    flex-grow: 1;
     .title {
       color: $black;
-      font-family: 'Oswald', sans-serif;
+      font-family: "Oswald", sans-serif;
       font-size: 70px;
       line-height: 1;
       margin-bottom: 30px;
@@ -213,7 +213,7 @@ export default {
     h3 {
       margin: 24px 0 6px;
       color: $black;
-      font-family: 'Oswald', sans-serif;
+      font-family: "Oswald", sans-serif;
       font-size: 20px;
     }
   }

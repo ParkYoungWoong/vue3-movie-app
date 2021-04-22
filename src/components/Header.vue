@@ -2,7 +2,7 @@
   <header>
     <Logo />
     <div class="nav nav-pills">
-      <div 
+      <div
         v-for="nav in navigations"
         :key="nav.name"
         class="nav-item">
@@ -53,9 +53,8 @@ export default {
   },
   methods: {
     isMatch(path) {
-      // if (!path) { return false }
-      // Optional chaining
-      return path?.test(this.$route.fullPath)
+      if (!path) return false
+      return path.test(this.$route.fullPath)
     },
     toAbout() {
       this.$router.push('/about')
@@ -98,7 +97,7 @@ header {
   @include media-breakpoint-down(sm) {
     .nav {
       display: none;
-    }   
+    }
   }
 }
 </style>
