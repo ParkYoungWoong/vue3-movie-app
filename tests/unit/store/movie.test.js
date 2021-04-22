@@ -23,13 +23,15 @@ describe('store/movie.js', () => {
   })
 
   test('데이터 초기화를 확인', async () => {
+    // 설정
     store.commit('updateState', {
       movies: [{ imdbID: '1' }],
       message: 'Hello world',
       loading: true
     })
+    // 동작
     store.commit('resetMovies')
-
+    // 확인
     expect(store.state.movies).toEqual([])
     expect(store.state.message).toBe('Search for the movie title!')
     expect(store.state.loading).toBe(false)
