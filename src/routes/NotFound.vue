@@ -1,25 +1,25 @@
 <template>
-  <div class="error-page">
+  <div class="not-found">
     <div class="status">
       404
     </div>
-    <div class="status-text">
+    <div class="message">
       Page Not Found!
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .error-page {
+  .not-found {
     line-height: 1.2;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     padding: 80px 20px;
     .status {
       font-size: 160px;
       color: $primary;
     }
-    .status-text {
+    .message {
       font-size: 50px;
     }
   }
