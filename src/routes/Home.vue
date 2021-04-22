@@ -16,7 +16,6 @@ export default {
     MovieList
   },
   created() {
-    console.log('Home!')
     this.$store.commit('movie/resetMovies')
   }
 }
