@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div 
+    <div
       :class="{ 'no-result': !movies.length }"
       class="inner">
       <Loader v-if="loading" />

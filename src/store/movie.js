@@ -39,6 +39,7 @@ export default {
   // 비동기로 동작합니다.
   actions: {
     async searchMovies({ state, commit }, payload) {
+      // const { title, type, number, year } = payload
       if (state.loading) return
 
       commit('updateState', {
@@ -89,6 +90,7 @@ export default {
       }
     },
     async searchMovieWithId({ state, commit }, payload) {
+      // const { id } = payload
       if (state.loading) return
 
       commit('updateState', {
