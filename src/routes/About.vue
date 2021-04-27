@@ -1,13 +1,13 @@
 <template>
-  <div class="photo">
-    <Loader
-      v-if="imageLoading"
-      absolute />
-    <img
-      :src="image"
-      :alt="name" />
-  </div>
-  <div class="details">
+  <div class="about">
+    <div class="photo">
+      <Loader
+        v-if="imageLoading"
+        absolute />
+      <img
+        :src="image"
+        :alt="name" />
+    </div>
     <div class="name">
       {{ name }}
     </div>
@@ -52,22 +52,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.photo {
-  width: 250px;
-  height: 250px;
-  margin: 40px auto 20px;
-  padding: 30px;
-  box-sizing: border-box;
-  background-color: $gray-200;
-  border: 10px solid $gray-300;
-  border-radius: 50%;
-  position: relative;
-  img {
-    width: 100%;
-  }
-}
-.details {
+.about {
   text-align: center;
+  .photo {
+    width: 250px;
+    height: 250px;
+    margin: 40px auto 20px;
+    padding: 30px;
+    border: 10px solid $gray-300;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: $gray-200;
+    position: relative;
+    img {
+      width: 100%;
+    }
+  }
   .name {
     font-size: 40px;
     font-family: "Oswald", sans-serif;

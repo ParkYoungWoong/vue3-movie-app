@@ -19,13 +19,14 @@
       class="user"
       @click="toAbout">
       <img
-        :src="$store.state.about.image"
-        alt="HEROPY" />
+        :src="image"
+        :alt="name" />
     </div>
   </header>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Logo from '~/components/Logo'
 
 export default {
@@ -50,6 +51,12 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapState('about', [
+      'image',
+      'name'
+    ])
   },
   methods: {
     isMatch(path) {
@@ -77,8 +84,8 @@ header {
     width: 40px;
     height: 40px;
     padding: 6px;
-    box-sizing: border-box;
     border-radius: 50%;
+    box-sizing: border-box;
     background-color: $gray-200;
     cursor: pointer;
     position: absolute;

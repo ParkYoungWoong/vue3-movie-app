@@ -10,7 +10,7 @@ describe('routes/Movie.vue', () => {
 
   beforeEach(async () => {
     window.scrollTo = jest.fn() // Mock
-    router.push('/movie/tt4520988')
+    router.push('/movie/tt1234567')
     await router.isReady()
     spy.requestDiffSizeImage = jest.spyOn(Movie.methods, 'requestDiffSizeImage')
     wrapper = shallowMount(Movie, {
@@ -26,15 +26,12 @@ describe('routes/Movie.vue', () => {
       }
     })
   })
-  afterEach(() => {
-    wrapper.unmount()
-  })
 
   test('최초 접속한 URL의 파라미터를 확인합니다', async () => {
     // 설정
     // 동작
     // 확인
-    expect(wrapper.vm.$route.params.id).toBe('tt4520988')
+    expect(wrapper.vm.$route.params.id).toBe('tt1234567')
   })
 
   test('지정한 이미지 크기로 URL을 변경합니다', () => {

@@ -2,7 +2,8 @@ module.exports = {
   // 사전에 정의된 전역 변수를 설정합니다.
   env: {
     browser: true,
-    node: true
+    node: true,
+    jest: true
   },
 
   // 사용 가능한 규칙 세트입니다.
@@ -33,19 +34,5 @@ module.exports = {
       singleline: 'never',
       multiline: 'never'
     }]
-  },
-
-  // 패턴에 일치하는 파일에는 jest 문법을 재정의합니다.
-  // 테스트를 위한 파일을 지정합니다.
-  overrides: [
-    {
-      files: [
-        '**/__tests__/*.js',
-        '**/tests/unit/**/*.test.js'
-      ],
-      env: {
-        jest: true
-      }
-    }
-  ]
+  }
 }

@@ -1,25 +1,21 @@
 import { shallowMount } from '@vue/test-utils'
+import store from '~/store'
+import router from '~/routes'
 import Header from '~/components/Header'
 
 describe('components/Header.vue', () => {
   let wrapper
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    window.scrollTo = jest.fn() // Mock
+    router.push('/movie/tt1234567')
+    await router.isReady()
     wrapper = shallowMount(Header, {
       global: {
-        stubs: ['RouterLink'],
-        mocks: {
-          $store: {
-            state: {
-              about: {
-                image: ''
-              }
-            }
-          },
-          $route: {
-            fullPath: '/movie/tt1234567'
-          }
-        }
+        plugins: [
+          store,
+          router
+        ]
       }
     })
   })

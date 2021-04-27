@@ -2,7 +2,7 @@
   <div class="container">
     <input
       v-model="title"
-      class="form-control title"
+      class="form-control"
       type="text"
       placeholder="Search for Movies, Series & more"
       @keyup.enter="apply" />
@@ -106,7 +106,8 @@ export default {
 
   @include media-breakpoint-down(lg) {
     display: block;
-    .title {
+    input {
+      margin-right: 0;
       margin-bottom: 10px;
     }
     .selects {
@@ -114,10 +115,6 @@ export default {
       margin-bottom: 10px;
       select {
         width: 100%;
-        flex: 1 0 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
     }
     .btn {

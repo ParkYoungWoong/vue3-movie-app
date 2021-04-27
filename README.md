@@ -35,12 +35,22 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 
 > 설치할 각 패키지(모듈)의 설치 버전이 예제와 다른 경우 사용법이 달라질 수 있습니다.<br>
 > 모든 패키지를 완성 예제의 [package.json](https://github.com/ParkYoungWoong/vue3-movie-app/blob/master/package.json) 파일에 명시된 버전과 동일하게 설치하는 것을 권장합니다.
+> [유뷰트에서 '강의 예제와 모듈(패키지) 버전 일치시키기' 영상 강의 보기](https://www.youtube.com/watch?v=5L9Ugz9eYxI)
 
-- [netlify-cli](https://www.npmjs.com/package/netlify-cli): Netlify 명령을 사용해 로컬에서 프로젝트와 서버리스 함수가 통신하기 위해 사용합니다.
-- [dotenv](https://www.npmjs.com/package/dotenv): 영화 정보의 API KEY를 환경 변수로 지정하기 위해 사용합니다.
-- [dotenv-webpack](https://www.npmjs.com/package/dotenv-webpack): Webpack에서 dotenv로 환경 변수를 설정합니다.
 - [axios](https://github.com/axios/axios):  HTTP 클라이언트 라이브러리로, OMDb API를 통해 영화 정보를 요청하기 위해 사용합니다.
 - [lodash](https://github.com/lodash/lodash): 다양한 유틸리티 기능을 제공하는 자바스크립트 라이브러리입니다.
+- [netlify-cli](https://www.npmjs.com/package/netlify-cli): Netlify 명령을 사용해 로컬에서 프로젝트와 서버리스 함수가 통신하기 위해 사용합니다.
+- [dotenv-webpack](https://www.npmjs.com/package/dotenv-webpack): Webpack에서 dotenv로 환경 변수를 설정합니다.
+
+## 패키지 설치 주의사항
+
+Vue 3버전에 대응하는 라이브러리(플러그인)와 최신의 부트스트랩 패키지를 설치하세요!
+
+- `npm i vue-router@4`  
+- `npm i vuex@next`
+- `npm i @vue/test-utils@next`
+- `npm i vue-jest@next`
+- `npm i bootstrap@next`
 
 ## 📚 Refs
 
@@ -48,16 +58,68 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 
 http://www.evotech.net/blog/2007/04/named-html-entities-in-numeric-order/
 
-## 설치 주의사항
+# 단위 테스트(Unit test)
 
-npm i vue-router@4  
-npm i vuex@next  
-npm i bootstrap@next  
-npm i @vue/test-utils@next
+단위(Unit) 테스트란 데이터(상태), 함수(메소드), 컴포넌트 등의 정의된 프로그램 최소 단위들이 독립적으로 정상 동작하는지 확인하는 것을 말합니다.<br>
+이를 통해 프로그램 전체의 신뢰도를 향상하고 코드 리팩터링(Code refactoring)의 부담을 줄일 수 있습니다.
 
-## 🤔 Issues..
+- jest: 페이스북에서 만든 테스트 프레임워크로 VTU(Vue Test Utils)에서 권장하는 테스트 러너(실행 환경)입니다.
+- @vue/test-utils: Vue.js 환경에서 단위 테스트를 하기 위한 공식(Official) 라이브러리 입니다.
+- vue-jest: Vue 파일을 Jest가 실행할 수 있는 자바스크립트로 컴파일합니다.
+- babel-jest: JS 파일을 Jest가 실행할 수 있는 자바스크립트로 컴파일합니다.
 
-[Add issue!](https://github.com/ParkYoungWoong/vue3-movie-app/issues/new)
+## 구성(Configuration)
 
-- Add unit test
-- Add e2e test
+`jest.config.js` 파일을 생성하고 다음과 같이 Jest 구성 옵션을 추가합니다.
+
+```js
+module.exports = {
+  // 파일 확장자를 지정하지 않은 경우, Jest가 검색할 확장자 목록입니다.
+  // 일반적으로 많이 사용되는 모듈의 확장자를 지정합니다.
+  moduleFileExtensions: [
+    'js',
+    'vue'
+  ],
+
+  // `~` 같은 경로 별칭을 매핑합니다.
+  // E.g. `import HelloWorld from '~/components/HelloWorld.vue';`
+  // `<rootDir>` 토큰을 사용해 루트 경로를 참조할 수 있습니다.
+  moduleNameMapper: {
+    '^~/(.*)$': '<rootDir>/src/$1'
+  },
+
+  // 일치하는 경로에서는 모듈을 가져오지 않습니다.
+  // `<rootDir>` 토큰을 사용해 루트 경로를 참조할 수 있습니다.
+  modulePathIgnorePatterns: [
+    '<rootDir>/node_modules',
+    '<rootDir>/dist'
+  ],
+
+  // jsdom 환경에 대한 URL을 설정합니다.
+  // https://github.com/facebook/jest/issues/6766
+  testURL: 'http://localhost/',
+
+  // 정규식과 일치하는 파일의 변환 모듈을 지정합니다.
+  transform: {
+    '^.+\\.vue$': 'vue-jest',
+    '^.+\\.js$': 'babel-jest'
+  }
+}
+```
+
+`.eslintrc.js` 파일에 다음과 같이 jest 옵션을 추가합니다.
+
+```js
+module.exports = {
+  env: {
+    browser: true,
+    node: true,
+    jest: true
+  },
+  // ...
+}
+```
+
+# E2E 테스트(End to End test)
+
+
