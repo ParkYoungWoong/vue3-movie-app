@@ -7,7 +7,8 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 
 ## Docs
 
-[Bootstrap](https://getbootstrap.com/)
+[Vue3](https://v3.ko.vuejs.org/guide/introduction.html)
+[Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
 [Vuex](https://next.vuex.vuejs.org/)
 [Vue Router](https://next.router.vuejs.org/installation.html)
 [Netlify](https://docs.netlify.com/)
@@ -100,7 +101,8 @@ module.exports = {
   // `<rootDir>` 토큰을 사용해 루트 경로를 참조할 수 있습니다.
   modulePathIgnorePatterns: [
     '<rootDir>/node_modules',
-    '<rootDir>/dist'
+    '<rootDir>/dist',
+    '<rootDir>/cypress' // For e2e test
   ],
 
   // jsdom 환경에 대한 URL을 설정합니다.
@@ -137,11 +139,20 @@ E2E(End to End) 테스트란 애플리케이션의 처음부터 끝까지의 흐
 - cypress: 브라우저 기반으로 쉽고 빠르게 테스트할 수 있는 프론트엔드 전용 테스트 도구입니다.
 - eslint-plugin-cypress: Cypress 테스트 환경을 위한 ESLint 플러그인입니다.
 
+### 폴더 구조
+
+- fixtures: 테스트에서 활용될 수 있는 정적 데이터 파일들을 보관합니다.
+- integration: 기본적인 테스트 파일들이 위치합니다.
+- plugins: 여러 플러그인으로 내부 동작을 활용, 수정 또는 확장할 수 있습니다.
+- support: 모든 테스트에 직전에 자동으로 포함되는 사전 지원 코드를 작성할 수 있습니다.
+
 `cypress.json` 파일에 다음과 같이 구성 옵션을 추가합니다.
 
 ```json
 {
-  "baseUrl": "http://localhost:8080"
+  "baseUrl": "http://localhost:8080",
+  "viewportWidth": 1500,
+  "viewportHeight": 800
 }
 ```
 
