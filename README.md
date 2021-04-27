@@ -47,7 +47,7 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 ### 📦 Packages
 
 > 설치할 각 패키지(모듈)의 설치 버전이 예제와 다른 경우 사용법이 달라질 수 있습니다.<br>
-> 모든 패키지를 완성 예제의 [package.json](https://github.com/ParkYoungWoong/vue3-movie-app/blob/master/package.json) 파일에 명시된 버전과 동일하게 설치하는 것을 권장합니다.
+> 모든 패키지를 완성 예제의 [package.json](https://github.com/ParkYoungWoong/vue3-movie-app/blob/master/package.json) 파일에 명시된 버전과 동일하게 설치하는 것을 권장합니다.<br>
 > [유뷰트에서 '강의 예제와 모듈(패키지) 버전 일치시키기' 영상 강의 보기](https://www.youtube.com/watch?v=5L9Ugz9eYxI)
 
 - [bootstrap](https://github.com/twbs/bootstrap): 다양하고 강력한 기능을 제공하는 UI 프레임워크입니다.
