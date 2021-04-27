@@ -13,6 +13,7 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 [Netlify](https://docs.netlify.com/)
 [Jest](https://jestjs.io/docs/getting-started)
 [Vue test utils](https://next.vue-test-utils.vuejs.org/guide/)
+[Cypress](https://docs.cypress.io/guides/overview/why-cypress)
 
 ## 💡 Specs
 
@@ -77,8 +78,6 @@ http://www.evotech.net/blog/2007/04/named-html-entities-in-numeric-order/
 - vue-jest: Vue 파일을 Jest가 실행할 수 있는 자바스크립트로 컴파일합니다.
 - babel-jest: JS 파일을 Jest가 실행할 수 있는 자바스크립트로 컴파일합니다.
 
-## 구성(Configuration)
-
 `jest.config.js` 파일을 생성하고 다음과 같이 Jest 구성 옵션을 추가합니다.
 
 ```js
@@ -116,7 +115,7 @@ module.exports = {
 }
 ```
 
-`.eslintrc.js` 파일에 다음과 같이 jest 옵션을 추가합니다.
+`.eslintrc.js` 파일에 다음과 같이 jest 환경 옵션을 추가합니다.
 
 ```js
 module.exports = {
@@ -131,4 +130,34 @@ module.exports = {
 
 # E2E 테스트(End to End test)
 
+E2E(End to End) 테스트란 애플리케이션의 처음부터 끝까지의 흐름을 테스트하는 방법입니다.<br>
+실제 사용자의 관점에서 테스트를 진행하며, 브라우저, 네트워크, DB 등 실제 환경을 최대한 그대로 활용해 진행합니다.<br>
+사용자 환경과 거의 동일하게 테스트를 진행하기 때문에 실제 상황에서 발생할 수 있는 여러 에러를 사전에 발견할 수 있습니다.
 
+- cypress: 브라우저 기반으로 쉽고 빠르게 테스트할 수 있는 프론트엔드 전용 테스트 도구입니다.
+- eslint-plugin-cypress: Cypress 테스트 환경을 위한 ESLint 플러그인입니다.
+
+`cypress.json` 파일에 다음과 같이 구성 옵션을 추가합니다.
+
+```json
+{
+  "baseUrl": "http://localhost:8080"
+}
+```
+
+`.eslintrc.js` 파일에 다음과 같이 Cypress 환경 옵션을 추가합니다.
+
+```js
+module.exports = {
+  env: {
+    browser: true,
+    node: true,
+    jest: true,
+    "cypress/globals": true
+  },
+  plugins: [
+    "cypress"
+  ],
+  // ...
+}
+```
