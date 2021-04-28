@@ -27,7 +27,7 @@ describe('routes/Movie.vue', () => {
     })
   })
 
-  test('최초 접속한 URL의 파라미터를 확인합니다', async () => {
+  test('최초 접속한 URL의 파라미터를 확인합니다', () => {
     // 설정
     // 동작
     // 확인
