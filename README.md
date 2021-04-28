@@ -5,7 +5,17 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 
 [DEMO](https://stupefied-hodgkin-d9d350.netlify.app/)
 
-### Docs
+## 🌿 Branches
+
+진행 순서에 맞는 브랜치를 확인하세요.
+
+- [Master](https://github.com/ParkYoungWoong/vue3-movie-app)
+- [Default](https://github.com/ParkYoungWoong/vue3-movie-app/tree/default)
+- [Netlify CLI](https://github.com/ParkYoungWoong/vue3-movie-app/tree/netlify-cli)
+- [Unit Test](https://github.com/ParkYoungWoong/vue3-movie-app/tree/unit-test)
+- [E2E Test](https://github.com/ParkYoungWoong/vue3-movie-app/tree/e2e-test)
+
+## 📖 Docs
 
 - [Vue3](https://v3.ko.vuejs.org/guide/introduction.html)
 - [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
@@ -16,7 +26,7 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 - [Vue test utils](https://next.vue-test-utils.vuejs.org/guide/)
 - [Cypress](https://docs.cypress.io/guides/overview/why-cypress)
 
-### 🎯 Goals
+## 🎯 Goals
 
 - Vuex(Store)로 중앙 집중식 데이터를 처리하고 네임스페이스를 관리할 수 있습니다.
 - SPA(Single Page Application)를 위한 Vue Router를 구성해 Hash 기반의 페이지 단위로 개발할 수 있습니다.
@@ -27,7 +37,7 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 - Jest와 VTU(Vue Test Utils)를 활용해 컴포넌트 단위 테스트를 진행할 수 있습니다.
 - Cypress를 활용해 E2E 테스트를 진행할 수 있습니다.
 
-### 💡 Specs
+## 💡 Specs
 
 - Vue3
 - Vuex
@@ -44,7 +54,7 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
   - Vue Test Utils
   - Cypress
 
-### 📦 Packages
+## 📦 Packages
 
 > 설치할 각 패키지(모듈)의 설치 버전이 예제와 다른 경우 사용법이 달라질 수 있습니다.<br>
 > 모든 패키지를 완성 예제의 [package.json](https://github.com/ParkYoungWoong/vue3-movie-app/blob/master/package.json) 파일에 명시된 버전과 동일하게 설치하는 것을 권장합니다.<br>
@@ -74,7 +84,7 @@ Vue 3버전에 대응하는 플러그인들과 최신의 부트스트랩 5버전
 - `npm i @vue/test-utils@next`
 - `npm i vue-jest@next`
 
-# 단위 테스트(Unit test)
+## 🔧 단위 테스트(Unit test)
 
 단위(Unit) 테스트란 데이터(상태), 함수(메소드), 컴포넌트 등의 정의된 프로그램 최소 단위들이 독립적으로 정상 동작하는지 확인하는 것을 말합니다.<br>
 이를 통해 프로그램 전체의 신뢰도를 향상하고 코드 리팩터링(Code refactoring)의 부담을 줄일 수 있습니다.
@@ -132,7 +142,7 @@ module.exports = {
 }
 ```
 
-# E2E 테스트(End to End test)
+## 🔧 E2E 테스트(End to End test)
 
 E2E(End to End) 테스트란 애플리케이션의 처음부터 끝까지의 흐름을 테스트하는 방법입니다.<br>
 실제 사용자의 관점에서 테스트를 진행하며, 브라우저, 네트워크, DB 등 실제 환경을 최대한 그대로 활용해 진행합니다.<br>
@@ -174,7 +184,7 @@ module.exports = {
 }
 ```
 
-# 📚 Refs
+## 📚 Refs
 
 ### HTML Entities in numeric order
 
