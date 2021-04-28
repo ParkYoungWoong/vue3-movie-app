@@ -2,8 +2,14 @@ module.exports = {
   // 사전에 정의된 전역 변수를 설정합니다.
   env: {
     browser: true,
-    node: true
+    node: true,
+    jest: true,
+    "cypress/globals": true
   },
+
+  plugins: [
+    "cypress"
+  ],
 
   // 사용 가능한 규칙 세트입니다.
   extends: [

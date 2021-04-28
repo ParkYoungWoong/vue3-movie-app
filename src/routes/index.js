@@ -15,7 +15,7 @@ export default createRouter({
       component: Home
     },
     {
-      path: '/movie/:id?',
+      path: '/movie/:id',
       component: Movie
     },
     {
@@ -23,7 +23,7 @@ export default createRouter({
       component: About
     },
     {
-      path: '/:pathMatch(.*)*',
+      path: '/:notFound(.*)',
       component: NotFound
     }
   ]

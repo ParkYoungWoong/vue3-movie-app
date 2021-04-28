@@ -56,7 +56,7 @@ Vue3와 OMDb API를 사용하는 영화 검색 애플리케이션입니다.<br>
 - [axios](https://github.com/axios/axios):  HTTP 클라이언트 라이브러리로, OMDb API를 통해 영화 정보를 요청하기 위해 사용합니다.
 - [lodash](https://github.com/lodash/lodash): 다양한 유틸리티 기능을 제공하는 자바스크립트 라이브러리입니다.
 - [netlify-cli](https://www.npmjs.com/package/netlify-cli): Netlify 명령을 사용해 로컬에서 프로젝트와 서버리스 함수가 통신하기 위해 사용합니다.
-- [dotenv-webpack](https://www.npmjs.com/package/dotenv-webpack): Webpack에서 dotenv로 환경 변수를 설정합니다.
+- [dotenv-webpack](https://www.npmjs.com/package/dotenv-webpack): Webpack에서 dotenv로 환경 변수를 설정합니다. 
 - [jest](https://github.com/facebook/jest): 페이스북에서 만든 테스트 프레임워크로 VTU(Vue Test Utils)에서 권장하는 테스트 러너(실행 환경)입니다.
 - [@vue/test-utils](https://github.com/vuejs/vue-test-utils-next): Vue.js 환경에서 단위 테스트를 하기 위한 공식(Official) 라이브러리 입니다.
 - [vue-jest](https://github.com/vuejs/vue-test-utils-next): Vue 파일을 Jest가 실행할 수 있는 자바스크립트로 컴파일합니다.

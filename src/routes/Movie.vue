@@ -106,8 +106,8 @@ export default {
         this.imageLoading = false
         return ''
       }
-      // 정상적인 URL인 경우.
       const src = url.replace('SX300', `SX${size}`)
+      // 정상적인 URL인 경우.
       this.$loadImage(src)
         .then(() => {
           this.imageLoading = false
@@ -219,18 +219,15 @@ export default {
   }
   @include media-breakpoint-down(xl) {
     .poster {
-      $width: 300px;
-      width: $width;
-      height: $width * 3/2;
+      width: 300px;
+      height: 300px * 3/2;
       margin-right: 40px;
     }
   }
   @include media-breakpoint-down(lg) {
-    & {
-      display: block;
-      .poster {
-        margin-bottom: 40px;
-      }
+    display: block;
+    .poster {
+      margin-bottom: 40px;
     }
   }
   @include media-breakpoint-down(md) {
