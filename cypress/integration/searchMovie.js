@@ -1,9 +1,15 @@
+/**
+ * 검색(메인) 페이지로 접근.
+ * 제목을 'frozen'으로, 표시 개수를 30개로 입력.
+ * 'Apply' 버튼을 클릭해 검색.
+ * 'Frozen II' 영화를 선택해 영화 상세 페이지로 이동.
+ * 상세 페이지 제목과 포스트 출력을 확인.
+ */
 describe('영화 검색(겨울왕국2)', () => {
   it('검색 페이지로 접근합니다', () => {
     cy.visit('/')
     // 검색 내비게이션 버튼의 활성화(active) 확인!
     cy.get('header .nav-link')
-      .eq(0)
       .contains('.active', 'Search')
   })
 
@@ -25,10 +31,11 @@ describe('영화 검색(겨울왕국2)', () => {
       .should('have.length', 30)
   })
 
-  it('첫번째 영화 아이템(겨울왕국)을 선택합니다', () => {
+  it('겨울왕국2 영화 아이템을 선택합니다', () => {
     // 1번째(Zero-based) 영화 아이템을 선택!
     cy.get('.movie')
-      .eq(1)
+      .find('.title')
+      .contains('Frozen II')
       .click()
     // 이동한 페이지 주소 확인!
     cy.url()
