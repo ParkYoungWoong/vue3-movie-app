@@ -2,17 +2,15 @@ import axios from 'axios'
 import movieStore from '~/store/movie'
 import _cloneDeep from 'lodash/cloneDeep'
 
-jest.mock('axios')
-
 describe('store/movie.js', () => {
   let store
   beforeEach(() => {
     store = _cloneDeep(movieStore)
     store.state = movieStore.state()
-    store.commit = function (name, payload) {
+    store.commit = (name, payload) => {
       store.mutations[name](store.state, payload)
     }
-    store.dispatch = function (name, payload) {
+    store.dispatch = (name, payload) => {
       const context = {
         state: store.state,
         commit: store.commit,
@@ -22,7 +20,7 @@ describe('store/movie.js', () => {
     }
   })
 
-  test('데이터 초기화를 확인', async () => {
+  test('영화 데이터를 초기화합니다', async () => {
     // 설정
     store.commit('updateState', {
       movies: [{ imdbID: '1' }],
@@ -37,7 +35,7 @@ describe('store/movie.js', () => {
     expect(store.state.loading).toBe(false)
   })
 
-  test('영화 목록을 잘 가져온 경우', async () => {
+  test('영화 목록을 잘 가져온 경우 데이터를 확인합니다', async () => {
     // 설정
     const res = {
       data: {
@@ -52,24 +50,24 @@ describe('store/movie.js', () => {
         ]
       }
     }
-    axios.post.mockResolvedValue(res)
+    axios.post = jest.fn().mockResolvedValue(res)
     // 동작
     await store.dispatch('searchMovies')
     // 확인
     expect(store.state.movies).toEqual(res.data.Search)
   })
 
-  test('영화 목록을 가져오지 못한 경우', async () => {
+  test('영화 목록을 가져오지 못한 경우 에러 메시지를 확인합니다', async () => {
     // 설정
     const errorMessage = 'Network Error.'
-    axios.post.mockRejectedValue(new Error(errorMessage))
+    axios.post = jest.fn().mockRejectedValue(new Error(errorMessage))
     // 동작
     await store.dispatch('searchMovies')
     // 확인
     expect(store.state.message).toBe(errorMessage)
   })
 
-  test('영화 아이템이 중복된 경우', async () => {
+  test('영화 아이템이 중복된 경우 고유하게 처리합니다', async () => {
     // 설정
     const res = {
       data: {
@@ -96,28 +94,27 @@ describe('store/movie.js', () => {
         ]
       }
     }
-    axios.post.mockResolvedValue(res)
+    axios.post = jest.fn().mockResolvedValue(res)
     // 동작
     await store.dispatch('searchMovies')
     // 확인
     expect(store.state.movies.length).toBe(1)
   })
 
-  test('단일 영화의 상세 정보를 잘 가져온 경우', async () => {
+  test('단일 영화의 상세 정보를 잘 가져온 경우 데이터를 확인합니다', async () => {
     // 설정
     const res = {
       data: {
-        imdbId: '1',
+        imdbID: '1',
         Title: 'Frozen',
         Poster: 'frozen.png',
         Year: '2021'
       }
     }
-    axios.post.mockResolvedValue(res)
+    axios.post = jest.fn().mockResolvedValue(res)
     // 동작
     await store.dispatch('searchMovieWithId')
     // 확인
-    expect(store.state.theMovie.Title).toBe('Frozen')
-    expect(store.state.theMovie.Poster).toBe('frozen.png')
+    expect(store.state.theMovie).toEqual(res.data)
   })
 })
