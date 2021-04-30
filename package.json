@@ -13,8 +13,9 @@
     "build": "webpack --mode production",
     "lint": "eslint --fix --ext .js,.vue",
     "test:unit": "jest --watchAll",
-    "test:e2e:open": "cypress open",
-    "test:e2e:run": "cypress run"
+    "test:unit:silent": "jest --watchAll --silent",
+    "test:e2e": "cypress open",
+    "test:e2e:headless": "cypress run"
   },
   "keywords": [],
   "author": "",
