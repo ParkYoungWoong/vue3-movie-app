@@ -11,8 +11,7 @@
         v-for="filter in filters"
         v-model="$data[filter.name]"
         :key="filter.name"
-        :class="`search__${filter.name}`"
-        class="form-select search__select">
+        class="form-select">
         <option
           v-if="filter.name === 'year'"
           value="">
